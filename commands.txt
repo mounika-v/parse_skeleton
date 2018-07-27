@@ -1,0 +1,45 @@
+triangle [-prq__a__uAcDjevngBPNEIOXzo_YS__iFlsCQVh] input_file
+
+
+
+cd ..
+
+g++ -o trace2 contour.cpp -lX11 -lpthread 
+./trace2
+cd triangle
+triangle -p contour
+triangle -rpa100 contour.1
+showme contour.2.ele &
+cd ..
+g++ -o makeoff makeoff.cpp
+./makeoff
+
+
+
+g++ -o skeleton skeleton.cpp gl_framework.cpp -lGL -lGLEW -lglfw
+./skeleton
+
+
+
+
+g++ -std=c++11 -I/usr/include/eigen3 -I./libigl/include/ libig.cpp -o libig
+
+
+
+
+
+
+---------------------------------------------------------------------------------------\
+g++ -c get_contour.cpp -lX11 -lpthread
+g++ -c makeoff.cpp
+g++ -c makeskeleton.cpp
+g++ -o makeskeleton makeskeleton.o get_contour.o makeoff.o
+
+
+
+-----------------------------------------------------------------------------------------
+
+g++ -O2 -c *.cpp -lm -lpthread -lX11
+g++ -o output *.o -lm -lpthread -lX11
+./output
+
